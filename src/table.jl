@@ -402,9 +402,10 @@ function DataAPI.colmetadatakeys(t::Table, col)
 end
 
 function DataAPI.colmetadatakeys(t::Table)
-    return (col => DataAPI.colmetadatakeys(t, col) for
-            col in Tables.columnnames(t) if
-            getmetadata(t[col]) !== nothing)
+    return (
+        col => DataAPI.colmetadatakeys(t, col) for
+        col in Tables.columnnames(t) if getmetadata(t[col]) !== nothing
+    )
 end
 
 Tables.istable(::Table) = true
